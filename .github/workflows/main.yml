@@ -68,14 +68,8 @@ jobs:
         uses: NasAmin/trx-parser@v0.0.3
         id: trx-parser
         with:
-          TRX_PATH: ${{ github.workspace }}/TestResults #This should be the path to your TRX files
+          TRX_PATH: ${{ github.workspace }}\TestResults
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
      
-      #- name: Run all Unit Tests for SampleApp
-      # run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel  /Settings:coverage.runsettings
-
       - name: Create nuget package
         run: nuget pack SampleApp
-
-     # - name: Publish nuget to GitHub registry
-     #   run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/IrfanSyed-PSC --api-key ${{github.token}} --skip-duplicate --no-symbols false
