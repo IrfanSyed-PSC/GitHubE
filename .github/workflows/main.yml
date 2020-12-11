@@ -61,7 +61,7 @@ jobs:
                 $testlist+=$file.FullName + " ";
               }
               
-              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings" -NoNewWindow -Wait
+              Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings /Logger:trx" -NoNewWindow -Wait
               
 
      
