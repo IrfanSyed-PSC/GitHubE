@@ -63,7 +63,13 @@ jobs:
               
               Start-Process "vstest.console.exe" -ArgumentList "$testlist /Parallel /Settings:coverage.runsettings /Logger:trx" -NoNewWindow -Wait
               
-
+    # Using the trx-parser action
+      - name: Parse Trx files
+        uses: NasAmin/trx-parser@v0.0.3
+        id: trx-parser
+        with:
+          TRX_PATH: ${{ github.workspace }}/TestResults #This should be the path to your TRX files
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
      
       #- name: Run all Unit Tests for SampleApp
       # run: vstest.console.exe SampleApp.Test\bin\Debug\SampleApp.Test.dll Algorithms.Test\bin\Debug\Algorithms.Test.dll DataStructures.Test\bin\Debug\DataStructures.Test.dll --collect:"Code Coverage" /Parallel  /Settings:coverage.runsettings
